@@ -20,17 +20,20 @@ import Menu_v2 from './components/user/menu_v2';
 import TestCal from './components/user/testCal';
 import Testimonials from './components/testimonials/Testimonials';
 import DailyInsert from './components/user/DailyInsert';
+import MenuView from './components/user/MenuView';
+import NewFoodCatContainer from './components/foods/NewFoodCatContainer';
 
 
 function App() {
 
   return (
-    <div className="bg">
+    <div class="bg">
       <Router >
         <NavBar />
         <Route path="/foods/:foodName" component={FoodsComponent} />
         <Route path="/details/:fdcid" component={FoodDetails} />
         <Route path="/foodCats" component={FoodCatContainer} />
+        <Route path="/newFoodCats" component={NewFoodCatContainer} />
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
@@ -44,6 +47,7 @@ function App() {
         <Route path="/test" component={TestCal} />
         <Route path="/testimonials" component={Testimonials} />
         <Route path="/dailyInsert" component={DailyInsert} />
+        <Route path="/menuView" component={MenuView} />
 
       </Router>
     </div>

@@ -2,12 +2,12 @@ var foodInfo = [
     {
         name: "Breads",
         foods: "White Bread, Whole-wheat Bread, Bagels, Pastries, Rolls",
-        image: '/images/breads.jpg'
+        image: '/images/cereals.jpg'
     },
     {
         name: "Pastas",
         foods: "Macaroni, Spaghetti,Lasagna,Ravioli,Fettuccine,ccc",
-        image: '/images/catPastas.jpg'
+        image: '/images/breads.jpg'
     },
     {
         name: "Fruits",

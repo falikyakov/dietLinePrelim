@@ -27,7 +27,7 @@ const NavBar = () => {
                         <Link to="/profile" className="nav-item nav-link">Profile</Link>
                         <Link to="/dash" className="nav-item nav-link">Weekly Stats</Link>
                         <Link to="/newPlan" className="nav-item nav-link">New Diet Plan</Link>
-                        <Link to="/foodCats" className="nav-item nav-link " tabIndex="-1">Browse Foods</Link>
+                        <Link to="/newFoodCats" className="nav-item nav-link " tabIndex="-1">Browse Foods</Link>
                         <Link to="/testimonials" className="nav-item nav-link " tabIndex="-1">Testimonials</Link>
                     </div>
 

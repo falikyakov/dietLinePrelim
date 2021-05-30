@@ -9,9 +9,8 @@ html {
 
 .bg {
   /* The image used */
- /* background-image: url("components/images/Eat-healthy2.jpg");*/
-  background-image: url("components/images/serenity3.jpg");
-
+  /* background-image: url("components/images/Eat-healthy2.jpg");*/
+  background-image: url("components/images/serenity3.1.jpg");
   /* Full height */
   height: 100%;
 
@@ -20,16 +19,13 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-
 }
 
-
-.tbl_bg_2{
-	/*background-image: url("components/images/tbl_bg_2.jpg");*/
+.tbl_bg_2 {
+  /*background-image: url("components/images/tbl_bg_2.jpg");*/
 
   /* Full height */
   height: 100%;
-  
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -37,9 +33,8 @@ html {
   background-size: cover;
 }
 
-
-#subg{
-   background-image: url("components/images/pomegranate.webp");
+#subg {
+  background-image: url("components/images/pomegranate.webp");
   /* Full height */
   height: 100%;
 
@@ -48,7 +43,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  color:white;
+  color: white;
 }
 
 #dbg {
@@ -243,4 +238,59 @@ html {
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+
+.foodCategoryDropdown {
+  display: none;
+}
+
+.foodCategory {
+}
+
+.foodCategory:hover .foodCategoryDropdown {
+  display: block;
+  position: absolute;
+  background: rgb(243, 143, 213);
+  margin-top: 10px;
+  margin-left: -10px;
+}
+
+.foodCategory:hover .foodCategoryDropdown ul li {
+  display: block;
+  margin-right: 10px;
+  width: 120px;
+  padding: 1px;
+  border-bottom: 1px dotted white;
+  background: transparent;
+  border-radius: 0;
+  text-align: left;
+}
+
+.foodCategory:hover .foodCategoryDropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.foodCategory:hover .foodCategoryDropdown ul li:hover {
+  color: rgb(212, 53, 13);
+}
+
+.angleRight {
+  float: right;
+}
+
+.subFoodsDropdown {
+  display: none;
+}
+
+.foodCategoryDropdownItem:hover .subFoodsDropdown {
+  position: absolute;
+  display: block;
+  width:auto;
+  margin-top: -40px;
+  margin-left: 90px;
+  background: rgb(71, 207, 241);
+}
+
+.subFoodsDropdown :hover {
+  color: blue;
 }
