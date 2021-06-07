@@ -8,19 +8,14 @@ import DailyInsertInput from './DailyInsertInput';
 import axios from 'axios';
 
 
-const DailyInsert = () => {
+const DailyPlan = () => {
 
     const [user, setUser] = useState({});
-    const [userPlan, setUserPlan] = useState({});
 
     useEffect(() => {
         const userString = localStorage.getItem("user");
         const user = JSON.parse(userString);
         setUser(user);
-
-        const userPlanString = localStorage.getItem("userPlan");
-        const userPlan = JSON.parse(userPlanString);
-        setUserPlan(userPlan);
     }, [])
 
 
@@ -29,45 +24,9 @@ const DailyInsert = () => {
     const changeExcersizeMinutesDaily = (e) => {
         setExcersizeMinutesDaily(e.target.value);
     }
-    const [date, setDate] = useState(Date);
-    const [weekOf, setWeekOf] = useState(Date);
-
+    const [date, setDate] = useState();
     const changeDate = (e) => {
         setDate(e.target.value);
-        userPlan.goals &&
-        userPlan.goals.map((goal) => {
-
-            if (goal.weekStartDate) {
-
-                var dt1 = new Date(goal.weekStartDate);
-                var dt2 = new Date(goal.weekStartDate);
-
-                var dt7 = dt2.getDate() + 7;
-                dt2.setDate(dt7);
-                var pd7 = dt2.toLocaleString();
-                alert(dt1 + "\n" + dt2 + "\n" + pd7 + "\n" + date);
-
-                var newDate = new Date(date);
-
-                if (newDate > dt1) {
-                    alert("hello date")
-                } else if (dt1 > newDate) {
-                    alert("hello dt2")
-                }
-
-
-                if (newDate > dt1 && newDate < dt2) {
-                    setWeekOf(dt1);
-
-                    {/*var d = new Date('2021-05-05');
-                var dd = d.getDate() + 20;
-                d.setDate(dd);
-            var nd = d.toLocaleString();*/}
-
-                    alert(" week: " + weekOf);
-                }
-            }
-        })
     }
 
     const [breakfastMainText, setbreakfastMainText] = useState("Main");
@@ -265,7 +224,7 @@ const DailyInsert = () => {
         event.preventDefault();
 
         const totalCalories = totalBrCal + totalLnCal + totalDnCal;
-        const dailyPlanActual = {
+        const dailyPlanInput = {
             breakfast: {
                 foods: [breakfastMainText, breakfastSideText, breakfastDrinkText, breakfastAdditivesText],
                 foodAmount: [breakfastMainGr, breakfastSideGr, breakfastDrinkGr, breakfastAdditivesGr],
@@ -284,12 +243,11 @@ const DailyInsert = () => {
             totalCalories: totalCalories,
             excersizeMinutesDaily: excersizeMinutesDaily,
             day: date,
-            weekOf: weekOf,
             userId: user._id
         }
 
 
-        axios.post("http://localhost:5990/router/db/DBinsert/insertDailyActual", dailyPlanActual)
+        axios.post("http://localhost:5990/router/db/DBinsert/insertDailyPlan", dailyPlanInput)
             .then(
                 (response) => {
                     // alert("in response");
@@ -308,15 +266,12 @@ const DailyInsert = () => {
 
     return (
         <div>
-            <h1>{weekOf.toLocaleString()}</h1>
-            <h1>{date}</h1>
-
             <div style={{ border: "solid thin purple", width: "400px", marginLeft: "20px", paddingLeft: "10px" }}>
-                Enter date of details: &nbsp; &nbsp;
+                Which day is this plan for: &nbsp; &nbsp;
             <input type="date" name="date" onChange={changeDate} />
             </div><br />
-            Enter the amount you excersized (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} />
-            <h1 className="display-4">Foods eaten:</h1>
+            &nbsp; Amount you plan to excersize (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} /><hr/>
+            <h1 className="display-4">Menu Plan:</h1>
             <fieldset style={{ border: "purple solid thin" }}>
                 <h1><u><strong>Breakfast:{brMainCal}</strong></u></h1>
                 <table style={{ borderSpacing: "15px", borderCollapse: "separate" }}>
@@ -357,7 +312,7 @@ const DailyInsert = () => {
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeBreakfastExtra} placeholder={breakfastExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeBreakfastExtra} />
                             </td>
                             <td>
                                 <button className="btn btn-default" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeBrCal}><strong id="totalBrCal" >See Total Calories</strong></button>
@@ -406,7 +361,7 @@ const DailyInsert = () => {
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeLunchExtra} placeholder={lunchExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeLunchExtra} />
                             </td>
                             <td>
                                 <button id="totalLnCal" className="btn btn-default" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeLnCal}><strong >See Total Calories</strong></button>
@@ -455,7 +410,7 @@ const DailyInsert = () => {
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeDinnerExtra} placeholder={dinnerExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeDinnerExtra} />
                             </td>
                             <td>
                                 <button className="btn btn-default" id="totalDnCal" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeDnCal}><strong>See Total Calories</strong></button>
@@ -469,4 +424,4 @@ const DailyInsert = () => {
     )
 }
 
-export default DailyInsert;
+export default DailyPlan;

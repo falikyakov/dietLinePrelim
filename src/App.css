@@ -294,3 +294,11 @@ html {
 .subFoodsDropdown :hover {
   color: blue;
 }
+
+#pleaseWait{
+  display: none;
+}
+
+#pleaseWaitVisible{
+  display: block;
+}

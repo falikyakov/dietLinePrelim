@@ -25,6 +25,8 @@ const Login = () => {
 
         e.preventDefault();
 
+        document.getElementById('pleaseWait').setAttribute("id", "pleaseWaitVisible");
+
         const user = await axios.post("http://localhost:5990/router/db/dbfind/login", info);
         const userData = user.data;
         console.log(userData);
@@ -66,7 +68,8 @@ const Login = () => {
                     </div>
                     {password}
 
-                    <Link to="/checkLogin"><input type="submit" className="btn btn-primary btn-block btn-lg" value="Login" onClick={loginUser} /></Link>
+                    <input type="submit" className="loginButton btn btn-primary btn-block btn-lg" value="Login" onClick={loginUser} />
+                    <div id="pleaseWait">Please wait...</div>
                 </form>
                 <div className="text-center small">Don't have an account? <Link to="/signup" style={{ color: "black" }}><u>Sign up</u></Link></div>
             </div>
@@ -74,4 +77,4 @@ const Login = () => {
     )
 }
 
-export default withRouter(Login);
+export default Login;

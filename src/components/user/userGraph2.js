@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chartjs-plugin-lineheight-annotation';
 
@@ -22,6 +22,7 @@ class UserGraph extends Component {
                 }
             })
 
+
         super(props);
         this.state = {
             data: {
@@ -34,7 +35,7 @@ class UserGraph extends Component {
                     borderWidth: 3,
                     data: calArray
                 },
-                    {/*{
+                {
                     borderColor: "red",
                     backgroundColor: "#f17e5d",
                     pointRadius: 0,
@@ -49,7 +50,7 @@ class UserGraph extends Component {
                     pointHoverRadius: 0,
                     borderWidth: 3,
                     data: [370, 394, 415, 409, 295, 445, 325, 450, 400, 484]
-                }*/}
+                }
                 ]
             },
             options: {

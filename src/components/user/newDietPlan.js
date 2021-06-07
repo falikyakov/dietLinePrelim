@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 
 const NewDietPlan = () => {
 
+    const thisUser = localStorage.getItem("user");
     const [user, setUser] = useState({})
 
     useEffect(() => {
@@ -37,7 +38,8 @@ const NewDietPlan = () => {
     };
     const avgCalories = 1;
 
-    const goals = {
+    
+    const goals = thisUser && {
         kgToLose: parseInt(kg),
         excersizePlanned: parseInt(excersize),
         caloriesToLose: parseInt(calories),
@@ -66,7 +68,7 @@ const NewDietPlan = () => {
     return (
         <Container style={{ margin: "5px", border: "solid purple thin", width: "1200px" }}>
             <h1 className="display-6">Goals:</h1>
-            <h3 style={{ fontFamily: "cursive" }}>According to your BMI ({user.BMI && user.BMI.toFixed(2)}), you need to lose x kg.</h3>
+            <h3 style={{ fontFamily: "cursive" }}>According to your BMI ({user && user.BMI && user.BMI.toFixed(2)}), you need to lose x kg.</h3>
             <hr /><br />
             Week start date: &nbsp; &nbsp;
             <input type="date" name="date" onChange={changeDate} />
@@ -76,7 +78,7 @@ const NewDietPlan = () => {
                 <span className="text-info">Remember: Be realistic; think of past successes and failures!</span><br /><br />
                     <h2>How much excersize can you do each day &nbsp;</h2>
                 <input type="number" name="excersizePlan" id="excersizePlan" placeholder="amount in minutes" onChange={changeExcersize} /><br />
-                <h3><span style={{color:"white"}}><i>Remember: The more excersize you do, the more leeway you have with calorie intake! Click on this <a href="https://www.healthline.com/nutrition/how-many-calories-per-day#average-calorie-needs"><u>link</u></a> for more details</i></span><br /><br /></h3>
+                <h3><span style={{ color: "white" }}><i>Remember: The more excersize you do, the more leeway you have with calorie intake! Click on this <a href="https://www.healthline.com/nutrition/how-many-calories-per-day#average-calorie-needs" target="_blank" rel="noopener noreferrer"><u>link</u></a> for more details</i></span><br /><br /></h3>
                 <h2>How many calories can you limit yourself to per day &nbsp;</h2>
                 <input type="number" name="caloriePlan" id="caloriePlan" onChange={changeCalories} /><br />
                 <h3><span style={{ color: "white" }}><i>Remember: The average amount of calories necessary for you to <i>maintain</i> your weight is {avgCalories}. 500 calories less means 1 pound (around 1/2 kg) lost per week</i></span><br /></h3>

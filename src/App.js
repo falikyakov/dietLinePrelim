@@ -22,12 +22,17 @@ import Testimonials from './components/testimonials/Testimonials';
 import DailyInsert from './components/user/DailyInsert';
 import MenuView from './components/user/MenuView';
 import NewFoodCatContainer from './components/foods/NewFoodCatContainer';
+import DailyPlan from './components/user/DailyPlan';
+import CategoryDetails from './components/foods/CategoryDetails';
+import Tips from './components/HealthInfo/Tips';
+import userGraph2 from './components/user/userGraph2';
+
 
 
 function App() {
 
   return (
-    <div class="bg">
+    <div className="bg">
       <Router >
         <NavBar />
         <Route path="/foods/:foodName" component={FoodsComponent} />
@@ -48,6 +53,10 @@ function App() {
         <Route path="/testimonials" component={Testimonials} />
         <Route path="/dailyInsert" component={DailyInsert} />
         <Route path="/menuView" component={MenuView} />
+        <Route path="/dailyPlan" component={DailyPlan} />
+        <Route path="/categoryDetails/:categoryName" component={CategoryDetails} />
+        <Route path="/tips" component={Tips} />
+        <Route path="/graph2" component={userGraph2} />
 
       </Router>
     </div>
