@@ -109,7 +109,7 @@ html {
 }
 
 .styled-table thead tr {
-  background-color: #009879;
+  background-color:#988900;
   color: #ffffff;
   text-align: left;
 }
@@ -120,11 +120,13 @@ html {
 }
 
 .styled-table tbody tr {
+  background-color:burlywood;
   border-bottom: thin solid #dddddd;
 }
 
 .styled-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
+  font-weight: bold;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -301,4 +303,18 @@ html {
 
 #pleaseWaitVisible{
   display: block;
+}
+
+
+/* article */
+.article{
+  width: device-width;
+  background-color: #cff0ea;
+  margin: 50px;
+  border-radius: 11%;
+  padding: 8px;
+}
+
+.articleTitle{
+  background-color: #a1e2b7;
 }

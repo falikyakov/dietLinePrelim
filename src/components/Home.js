@@ -111,10 +111,9 @@ const Home = (props) => {
                 </Container>
             </center>
 
-            {
-                user &&
-                <h1><i>Welcome {user.FirstName + " " + user.LastName}</i></h1>
-            }
+           
+                <h1><i>Welcome {user && user.FirstName + " " + user && user.LastName}</i></h1>
+    
 
 
         </div>

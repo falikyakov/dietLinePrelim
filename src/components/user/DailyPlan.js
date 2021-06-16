@@ -6,6 +6,7 @@ import DailyInsertSubList from './DailyInsertSubList';
 import DailyInsertList from './DailyInsertList';
 import DailyInsertInput from './DailyInsertInput';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const DailyPlan = () => {
@@ -272,6 +273,8 @@ const DailyPlan = () => {
             </div><br />
             &nbsp; Amount you plan to excersize (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} /><hr/>
             <h1 className="display-4">Menu Plan:</h1>
+            &nbsp;<Link to="/newFoodCats"><big style={{color:"purple"}}><strong><u> Browse Foods</u></strong></big></Link>
+            <br /><br/>
             <fieldset style={{ border: "purple solid thin" }}>
                 <h1><u><strong>Breakfast:{brMainCal}</strong></u></h1>
                 <table style={{ borderSpacing: "15px", borderCollapse: "separate" }}>

@@ -5,3 +5,6 @@
 
 
   const bmi = "https://www.calculatestuff.com/health/bmi-calculator?units=metric&height=170&weight=87"
+
+
+new diet plan - onSubmit, create pop-up before going to home page

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import axios from 'axios';
 
 const CheckLogin = () => {
-
     const [user, setUser] = useState();
 
     useEffect(() => {

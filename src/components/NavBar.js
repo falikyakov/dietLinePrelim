@@ -24,11 +24,10 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link active">Home</Link>
-                        <Link to="/profile" className="nav-item nav-link">Profile</Link>
-                        <Link to="/dash" className="nav-item nav-link">Weekly Stats</Link>
-                        <Link to="/newPlan" className="nav-item nav-link">New Diet Plan</Link>
-                        <Link to="/newFoodCats" className="nav-item nav-link " tabIndex="-1">Browse Foods</Link>
-                        <Link to="/testimonials" className="nav-item nav-link " tabIndex="-1">Testimonials</Link>
+                        <Link to="/checkUser/profile" className="nav-item nav-link">Profile</Link>
+                        <Link to="/checkUser/dash" className="nav-item nav-link">Weekly Stats</Link>
+                        <Link to="/checkUser/newPlan" className="nav-item nav-link">New Diet Plan</Link>
+                        <Link to="/checkUser/dailyInsert" className="nav-item nav-link " tabIndex="-1">Daily Insert</Link>
                     </div>
 
                     <div className="navbar-nav ml-auto" onClick={refreshPage}>

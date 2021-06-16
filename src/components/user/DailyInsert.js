@@ -6,9 +6,14 @@ import DailyInsertSubList from './DailyInsertSubList';
 import DailyInsertList from './DailyInsertList';
 import DailyInsertInput from './DailyInsertInput';
 import axios from 'axios';
+import {useHistory } from 'react-router-dom';
+
 
 
 const DailyInsert = () => {
+
+    let history = useHistory();
+
 
     const [user, setUser] = useState({});
     const [userPlan, setUserPlan] = useState({});
@@ -34,40 +39,30 @@ const DailyInsert = () => {
 
     const changeDate = (e) => {
         setDate(e.target.value);
+        changeWeekOf();
+    }
+
+    const changeWeekOf = () => {
         userPlan.goals &&
-        userPlan.goals.map((goal) => {
+            userPlan.goals.map((goal) => {
 
-            if (goal.weekStartDate) {
+                if (goal.weekStartDate) {
 
-                var dt1 = new Date(goal.weekStartDate);
-                var dt2 = new Date(goal.weekStartDate);
+                    var dt1 = new Date(goal.weekStartDate);
+                    var dt2 = new Date(goal.weekStartDate);
 
-                var dt7 = dt2.getDate() + 7;
-                dt2.setDate(dt7);
-                var pd7 = dt2.toLocaleString();
-                alert(dt1 + "\n" + dt2 + "\n" + pd7 + "\n" + date);
+                    var dt7 = dt2.getDate() + 7;
+                    dt2.setDate(dt7);
+                    var pd7 = dt2.toLocaleString();
 
-                var newDate = new Date(date);
+                    var newDate = new Date(date);
 
-                if (newDate > dt1) {
-                    alert("hello date")
-                } else if (dt1 > newDate) {
-                    alert("hello dt2")
+                    if (newDate > dt1 && newDate < dt2) {
+                        setWeekOf(dt1);
+
+                    }
                 }
-
-
-                if (newDate > dt1 && newDate < dt2) {
-                    setWeekOf(dt1);
-
-                    {/*var d = new Date('2021-05-05');
-                var dd = d.getDate() + 20;
-                d.setDate(dd);
-            var nd = d.toLocaleString();*/}
-
-                    alert(" week: " + weekOf);
-                }
-            }
-        })
+            })
     }
 
     const [breakfastMainText, setbreakfastMainText] = useState("Main");
@@ -301,7 +296,7 @@ const DailyInsert = () => {
             }
             );
 
-        alert(dinnerDrinkText);
+        history.push('/');
     }
 
 
@@ -313,12 +308,12 @@ const DailyInsert = () => {
 
             <div style={{ border: "solid thin purple", width: "400px", marginLeft: "20px", paddingLeft: "10px" }}>
                 Enter date of details: &nbsp; &nbsp;
-            <input type="date" name="date" onChange={changeDate} />
+            <input type="date" name="date" onChange={changeDate} onMouseLeave={changeWeekOf} />
             </div><br />
             Enter the amount you excersized (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} />
-            <h1 className="display-4">Foods eaten:</h1>
+            <h1 className="display-4">Foods eaten:</h1><strong><hr /></strong>
             <fieldset style={{ border: "purple solid thin" }}>
-                <h1><u><strong>Breakfast:{brMainCal}</strong></u></h1>
+                <h1><u><strong>Breakfast:</strong></u></h1>
                 <table style={{ borderSpacing: "15px", borderCollapse: "separate" }}>
                     <thead>
                         <tr>
@@ -464,7 +459,13 @@ const DailyInsert = () => {
                     </tbody>
                 </table>
             </fieldset><br />
-            <h4><button type="submit" style={{ marginLeft: "20px", borderRadius: "9%", backgroundColor: "violet" }} onClick={sendData}>Submit</button></h4>
+
+            <center>
+                <h3>
+                    Please make sure you entered the date <br/> and the excersize minutes
+                </h3><br /><hr />
+                <h4><button type="submit" style={{ marginLeft: "20px", borderRadius: "9%", backgroundColor: "violet" }} onClick={sendData}>Submit</button></h4>
+            </center>
         </div>
     )
 }
