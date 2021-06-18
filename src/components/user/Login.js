@@ -40,21 +40,26 @@ const Login = () => {
         const userId = localJson._id;
 
         const userPlan = await axios.post("http://localhost:5990/router/db/dbfind/login2", { userId: userId });
-        const userPlanData = userPlan.data;
-        console.log(userPlanData);
-        const userPlanString = JSON.stringify(userPlanData);
-        console.log("userPlanString: " + userPlanString);
+        if (userPlan.status >= 200 && userPlan.status < 300) {
+            const userPlanData = userPlan.data;
+            console.log("userPlanData: " + userPlanData);
+            const userPlanString = JSON.stringify(userPlanData);
+            console.log("userPlanString: " + userPlanString);
 
-        localStorage.setItem("userPlan", userPlanString);
+            localStorage.setItem("userPlan", userPlanString);
 
 
-        history.push('/checkLogin');
-
+            history.push('/checkLogin');
+        }
+        if (!userPlan.status ) {
+            alert("error");
+            history.push('/articles');
+        }
     }
 
 
     return (
-        <div>
+        <div style={{minHeight:"1000px"}}>
             <div className="login-form">
                 <form>
                     <div className="avatar"><i className="material-icons">&#xE7FF;</i></div>
@@ -62,17 +67,19 @@ const Login = () => {
                     <div className="form-group">
                         <input type="email" className="form-control" placeholder="Email" required="required" onChange={changeEmail} />
                     </div>
-                    {email}
                     <div className="form-group">
                         <input type="password" className="form-control" placeholder="Password" required="required" onChange={changePassword} />
                     </div>
-                    {password}
 
                     <input type="submit" className="loginButton btn btn-primary btn-block btn-lg" value="Login" onClick={loginUser} />
                     <div id="pleaseWait">Please wait...</div>
                 </form>
                 <div className="text-center small">Don't have an account? <Link to="/signup" style={{ color: "black" }}><u>Sign up</u></Link></div>
             </div>
+            <br />
+            <br />
+            <br />
+        
         </div>
     )
 }

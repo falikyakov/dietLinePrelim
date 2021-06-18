@@ -3,11 +3,15 @@ import ReactSlider from './ReactSlider'
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import WelcomeCard from './user/welcomeCard'
+import WelcomeUser from './user/welcomeUser';
+
 
 
 const Home = (props) => {
 
     const [user, setUser] = useState({});
+    const [mommy, setMommy] = useState({});
 
     useEffect(async () => {
 
@@ -53,6 +57,7 @@ const Home = (props) => {
             <center>
                 <ReactSlider />
             </center>
+           <WelcomeUser />
             <br />
             <center>
                 <Container>
@@ -111,9 +116,9 @@ const Home = (props) => {
                 </Container>
             </center>
 
-           
-                <h1><i>Welcome {user && user.FirstName + " " + user && user.LastName}</i></h1>
-    
+
+            <h1><i>Welcome {user && user.FirstName + " " + "hello "+user && user.LastName}</i></h1>
+
 
 
         </div>

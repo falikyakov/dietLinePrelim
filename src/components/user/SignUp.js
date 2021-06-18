@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const SignUp = () => {
 
@@ -86,10 +86,14 @@ const SignUp = () => {
         axios.post("http://localhost:5990/router/db/DBinsert/insertUser", user)
             .then(
                 (response) => {
-                    console.log(response.data);
+                    console.log(response);
                 }).
             catch((error) => {
                 console.log("error: " + error);
+                document.getElementById("error").innerHTML = "Server Error <br/>Please try again";
+                setTimeout(() => {
+                    document.getElementById("error").innerHTML = "";
+                }, 3000);
             }
             );
 
@@ -105,7 +109,7 @@ const SignUp = () => {
                         <div className="form-group">
                             <label className="control-label col-sm-2" htmlFor="firstName" style={{ color: "red" }} >First Name:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="firstName" name="firstName" placeholder="Enter First Name" onChange={changeFirstName} />
+                                <input type="text" className="form-control" id="firstName" name="firstName"  placeholder="Enter First Name" onChange={changeFirstName} required/>
                             </div>
                         </div>
                         <div className="form-group">
@@ -159,9 +163,10 @@ const SignUp = () => {
 
                         <div className="form-group">
                             <div className="col-sm-offset-2 col-sm-10">
-                                <button className="btn btn-success" onClick={submitUser} ><Link to={`/welcome/${user.firstName}/${user.lastName}`}><span style={{ color: "white" }} >Submit</span></Link></button>
+                                <button className="btn btn-success" onClick={submitUser} ><Link to="/login"><span style={{ color: "white" }} >Submit</span></Link></button>
                             </div>
                         </div>
+                        <h3 id="error" style={{color:"black"}}></h3>
                         <br/>
                     </form>
                 </center>
