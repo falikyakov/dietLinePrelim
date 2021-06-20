@@ -26,7 +26,9 @@ const ArticlePage = () => {
                 articles.response &&
                 articles.response.docs &&
                 articles.response.docs.map((article, index) => {
-                    return <Article key={index} title={article.headline.main} text={article.lead_paragraph} />
+                    const pubDate = new Date(article.pub_date);
+                    const thisDate = pubDate.getDate() + "/" + (pubDate.getMonth() + 1) + "/" + pubDate.getFullYear();
+                    return <Article key={index} date={thisDate} title={article.headline.main} text={article.lead_paragraph} />
                 })
             }
         </div>

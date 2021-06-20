@@ -15,8 +15,7 @@ import WelcomeUser from './components/user/welcomeUser';
 import Profile from './components/user/profile';
 import NewDietPlan from './components/user/newDietPlan';
 import CheckLogin from './components/user/checkLogin';
-import MenuTable from './components/user/menuTable';
-import Menu_v2 from './components/user/menu_v2';
+import Menu_v2 from './components/not used/menu_v2';
 import TestCal from './components/user/testCal';
 import Testimonials from './components/testimonials/Testimonials';
 import DailyInsert from './components/user/DailyInsert';
@@ -48,10 +47,9 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/dash" component={Dashboard} />
         <Route path="/welcome/:firstName/:lastName" component={WelcomeUser} />
-        <Route path="/profile/:userId" component={Profile} />
+        <Route path="/profile" component={Profile} />
         <Route path="/newPlan" component={NewDietPlan} />
         <Route path="/checkLogin" component={CheckLogin} />
-        <Route path="/menu" component={MenuTable} />
         <Route path="/menu2" component={Menu_v2} />
         <Route path="/test" component={TestCal} />
         <Route path="/testimonials" component={Testimonials} />

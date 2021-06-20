@@ -24,9 +24,9 @@ const NavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link active">Home</Link>
-                        <Link to="/checkUser/profile" className="nav-item nav-link">Profile</Link>
-                        <Link to="/checkUser/dash" className="nav-item nav-link">Weekly Stats</Link>
+                        <Link to="/checkUser/dash" className="nav-item nav-link">Profile</Link>
                         <Link to="/checkUser/newPlan" className="nav-item nav-link">New Diet Plan</Link>
+                        <Link to="/checkUser/dailyPlan" className="nav-item nav-link " tabIndex="-1">New Daily Menu</Link>
                         <Link to="/checkUser/dailyInsert" className="nav-item nav-link " tabIndex="-1">Daily Insert</Link>
                     </div>
 

@@ -18,7 +18,7 @@ const NewFoodCategoryCard = (props) => {
                     variant="success"
                     block
                 >
-                    <Link to={`/foods/${props.name}`} style={{ color: "white" }}> Browse Foods</Link>
+                    <Link to={`/categoryDetails/${props.name}`} style={{ color: "white" }}> Browse Foods</Link>
                 </Button>
             </Card.Body>
         </Card>

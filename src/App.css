@@ -62,7 +62,7 @@ html {
 .details-table {
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-family: sans-serif;
   font-weight: bold;
   color: #ffffff;
@@ -106,11 +106,12 @@ html {
   font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .styled-table thead tr {
-  background-color:#988900;
-  color: #ffffff;
+  background-color:#93cf08;
+  color: #370b5c;
   text-align: left;
 }
 
@@ -136,6 +137,33 @@ html {
 .styled-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+
+/* style for profile table */
+.profile-table {
+  border-collapse: collapse;
+  margin: 25px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+.profile-table thead tr {
+  background-color:#0c6ea7b2;
+  color: #ffffff;
+  text-align: left;
+}
+
+.profile-table th,
+.profile-table td {
+  padding: 12px 15px;
+}
+
+.profile-table tbody tr {
+  background-color:burlywood;
+  border-bottom: thin solid #dddddd;
 }
 
 /*styles for LoginForm*/

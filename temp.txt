@@ -6,5 +6,9 @@
 
   const bmi = "https://www.calculatestuff.com/health/bmi-calculator?units=metric&height=170&weight=87"
 
-
-new diet plan - onSubmit, create pop-up before going to home page
+******to do 20/6/21******
+3. work out the .env issues
+4. port of react app on heroku
+5. port of mongoDB app on heroku (how will react/axios know which port to connect to?)
+6. figure out email reset await issue with signup submitUser function
+7. issue: weekOf (dailyInsert & DailyPlan) doesn't reset if date is changes to that which doesn't have a weekOf

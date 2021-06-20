@@ -11,7 +11,7 @@ const DailyInsertList = (props) => {
             <ul>
                 {
                     FoodList.fullList.map((food, index) => {
-                        return <li className="foodCategoryDropdownItem" key={index}>{food}<span className="angleRight"><FaChevronRight /></span>
+                        return <li className="foodCategoryDropdownItem" key={index} onMouseLeave={props.onMouseLeave}>{food}<span className="angleRight"  ><FaChevronRight /></span>
                             <DailyInsertSubList category={food} func={props.func} />
                         </li>
                     })

@@ -90,7 +90,7 @@ const MenuView = () => {
     }
 
     return (
-        <div style={{ minHeight: "800px" }}>
+        <div style={{ minHeight: "900px" }}>
             <center>
                 <button onClick={seeMenu}>View today's menu</button><br /><br />
                 <button>View by date <input type="date" onChange={changeMon} /> <button onClick={seeDateMenu }>Enter</button></button><br /><br />
@@ -98,25 +98,34 @@ const MenuView = () => {
                 <table id="table" className="styled-table">
                     <thead>
                         <tr>
+                            <th colspan="3"><center>{ exMon}</center></th>
+                        </tr>
+                        <tr>
                             <th>Breakfast</th>
                             <th>Lunch</th>
                             <th>Dinner</th>
                         </tr>
                         <tr>
                             <td>
+                                <ul>
                                 {bkFoods.map((food,index) => {
-                                    return <div>{food}  {bkFoodsAmount[index]}gr   <br /></div>
+                                    return <li>{food}&nbsp;-&nbsp; {bkFoodsAmount[index]}gr </li>
                                 })}
+                                </ul>
                             </td>
                             <td>
+                                <ul>
                                 {lnFoods.map((food, index) => {
-                                    return <div>{food}  {lnFoodsAmount[index]}gr   <br /></div>
+                                    return <li>{food} &nbsp;-&nbsp; {lnFoodsAmount[index]}gr </li>
                                 })}
+                                </ul>
                             </td>
                             <td>
+                                <ul>
                                 {dnFoods.map((food, index) => {
-                                    return <div>{food}  {dnFoodsAmount[index]}gr  <br /></div>
+                                    return <li>{food} &nbsp;-&nbsp; {dnFoodsAmount[index]}gr </li>
                                 })}
+                                </ul>
                             </td>
                         </tr>
                         {exMon}

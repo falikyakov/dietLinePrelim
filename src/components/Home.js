@@ -66,15 +66,15 @@ const Home = (props) => {
                             <Card.Img variant="top" src="images/meal1.jpg" style={{ height: "240px", maxWidth: "330px" }} />
                             <Card.Body className="d-flex flex-column" style={{ height: "200px", maxWidth: "330px" }} >
                                 <div className="d-flex mb-2 justify-content-between">
-                                    <Card.Title className="mb-0 font-weight-bold">Diet Plan</Card.Title>
+                                    <Card.Title className="mb-0 font-weight-bold">Headlines</Card.Title>
                                 </div>
-                                <Card.Text className="text-secondary">Set up a diet plan geared to your specific needs!</Card.Text>
+                                <Card.Text className="text-secondary">Browse through current health news headlines</Card.Text>
                                 <Button
                                     className="mt-auto font-weight-bold"
                                     variant="info"
                                     block
                                 >
-                                    <Link to="/newPlan" style={{ color: "white" }}>more</Link>
+                                    <Link to="/articles" style={{ color: "white" }}>more</Link>
                                 </Button>
                             </Card.Body>
                         </Card>
@@ -115,12 +115,6 @@ const Home = (props) => {
                     </Row>
                 </Container>
             </center>
-
-
-            <h1><i>Welcome {user && user.FirstName + " " + "hello "+user && user.LastName}</i></h1>
-
-
-
         </div>
     )
 }

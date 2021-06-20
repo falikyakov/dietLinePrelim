@@ -54,7 +54,7 @@ const FoodsComponent = ({match}) => {
 
     return (
         <div className="grid-container">
-            {fcMap(foodArray)}
+            {foodArray && fcMap(foodArray)}
         </div>
 
     )

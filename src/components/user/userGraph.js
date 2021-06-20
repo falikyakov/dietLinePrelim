@@ -27,14 +27,15 @@ class UserGraph extends Component {
             data: {
                 labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
                 datasets: [{
-                    borderColor: "green",
+                    label:'last seven days',
+                    borderColor: "lightGreen",
                     backgroundColor: "#6bd098",
                     pointRadius: 0,
                     pointHoverRadius: 0,
                     borderWidth: 3,
                     data: calArray
                 },
-                    {/*{
+                   /* {{
                     borderColor: "red",
                     backgroundColor: "#f17e5d",
                     pointRadius: 0,
@@ -49,7 +50,7 @@ class UserGraph extends Component {
                     pointHoverRadius: 0,
                     borderWidth: 3,
                     data: [370, 394, 415, 409, 295, 445, 325, 450, 400, 484]
-                }*/}
+                }}*/
                 ]
             },
             options: {
@@ -98,7 +99,7 @@ class UserGraph extends Component {
     render() {
         return (
             <div style={{ position: "relative" }} className="col-lg-6">
-                <h2>Chart Sample</h2>
+                <h2>Calorie Intake</h2>
                 <Line
                     options={{
                         responsive: true,

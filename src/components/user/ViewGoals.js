@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Link} from 'react-router-dom'
 
 const ViewGoals = () => {
 
@@ -43,10 +43,10 @@ const ViewGoals = () => {
 
 
     const deleteGoal = () => {
-        alert(weekStartMore);
         axios.post("http://localhost:5990/router/db/DBupdateUser/deleteGoal", info)
             .then(
                 (response) => {
+                    alert("Delete successfull!")
                     console.log("SUCCESS: " + response.data);
                 }).
             catch((error) => {
@@ -60,7 +60,7 @@ const ViewGoals = () => {
 
 
     return (
-        <div>
+        <div style={{minHeight:"1000px"}}>
             <center>
                 <table className="styled-table">
                     <thead>
@@ -105,6 +105,8 @@ const ViewGoals = () => {
                         }
                     </tbody>
                 </table>
+                <br />
+                <button className="btn"><Link to="/newPlan"><strong>Back to New Diet Plan</strong></Link></button>
             </center>
         </div>
     )

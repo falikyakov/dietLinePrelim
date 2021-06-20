@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import FoodList from '../foods/FoodList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FaChevronRight } from "react-icons/fa";
-import DailyInsertSubList from './DailyInsertSubList';
 import DailyInsertList from './DailyInsertList';
 import DailyInsertInput from './DailyInsertInput';
 import axios from 'axios';
 import {useHistory } from 'react-router-dom';
-
 
 
 const DailyInsert = () => {
@@ -34,8 +32,8 @@ const DailyInsert = () => {
     const changeExcersizeMinutesDaily = (e) => {
         setExcersizeMinutesDaily(e.target.value);
     }
-    const [date, setDate] = useState(Date);
-    const [weekOf, setWeekOf] = useState(Date);
+    const [date, setDate] = useState();
+    const [weekOf, setWeekOf] = useState();
 
     const changeDate = (e) => {
         setDate(e.target.value);
@@ -59,7 +57,7 @@ const DailyInsert = () => {
 
                     if (newDate > dt1 && newDate < dt2) {
                         setWeekOf(dt1);
-
+                        alert("week of: " + weekOf.toLocaleString());
                     }
                 }
             })
@@ -125,7 +123,6 @@ const DailyInsert = () => {
         setBrAdditivesCal(breakfastAdditivesValue * (breakfastAdditivesGr / 100));
     }
     const seeBrCal = () => {
-        //const totalCal = brMainCal + brSideCal + brDrinkCal + brAdditivesCal + breakfastExtra;
         document.getElementById("totalBrCal").innerHTML = totalBrCal;
     }
 
@@ -189,7 +186,6 @@ const DailyInsert = () => {
         setLnAdditivesCal(lunchAdditivesValue * (lunchAdditivesGr / 100));
     }
     const seeLnCal = () => {
-        //var lnCal = lnMainCal + lnSideCal + lnDrinkCal + lnAdditivesCal + lunchExtra;
         document.getElementById("totalLnCal").innerHTML = `<strong>${totalLnCal}</strong>`;
     }
 
@@ -259,6 +255,15 @@ const DailyInsert = () => {
     const sendData = async (event) => {
         event.preventDefault();
 
+        if (!date) {
+            alert("Please enter date of details");
+            return;
+        }
+        const confirm = window.confirm("Are you sure? ");
+        if (confirm == false) {
+            return;
+        }
+
         const totalCalories = totalBrCal + totalLnCal + totalDnCal;
         const dailyPlanActual = {
             breakfast: {
@@ -287,9 +292,7 @@ const DailyInsert = () => {
         axios.post("http://localhost:5990/router/db/DBinsert/insertDailyActual", dailyPlanActual)
             .then(
                 (response) => {
-                    // alert("in response");
                     console.log("SUCCESS: " + response.data);
-                    // alert(response.data)
                 }).
             catch((error) => {
                 console.log("error: " + error);
@@ -303,15 +306,15 @@ const DailyInsert = () => {
 
     return (
         <div>
-            <h1>{weekOf.toLocaleString()}</h1>
-            <h1>{date}</h1>
-
+            
             <div style={{ border: "solid thin purple", width: "400px", marginLeft: "20px", paddingLeft: "10px" }}>
                 Enter date of details: &nbsp; &nbsp;
             <input type="date" name="date" onChange={changeDate} onMouseLeave={changeWeekOf} />
             </div><br />
-            Enter the amount you excersized (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} />
+            &nbsp; &nbsp; Please enter the amount you excersized (minutes): &nbsp; <input type="number" onChange={changeExcersizeMinutesDaily} />
             <h1 className="display-4">Foods eaten:</h1><strong><hr /></strong>
+           
+           
             <fieldset style={{ border: "purple solid thin" }}>
                 <h1><u><strong>Breakfast:</strong></u></h1>
                 <table style={{ borderSpacing: "15px", borderCollapse: "separate" }}>
@@ -330,29 +333,29 @@ const DailyInsert = () => {
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {breakfastMainText} &nbsp; <DailyInsertInput func={changeBreakfastMainGr} func2={setTotalBrCal} />
-                                    <DailyInsertList func={changebreakfastMainText} />
+                                    <DailyInsertList func={changebreakfastMainText} onMouseLeave={ setTotalBrCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {breakfastSideText} &nbsp; <DailyInsertInput func={changeBreakfastSideGr} func2={setTotalBrCal} />
-                                    <DailyInsertList func={changebreakfastSideText} />
+                                    <DailyInsertList func={changebreakfastSideText} onMouseLeave={setTotalBrCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {breakfastDrinkText} &nbsp; <DailyInsertInput func={changeBreakfastDrinkGr} func2={setTotalBrCal} />
-                                    <DailyInsertList func={changebreakfastDrinkText} />
+                                    <DailyInsertList func={changebreakfastDrinkText} onMouseLeave={setTotalBrCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {breakfastAdditivesText} &nbsp; <DailyInsertInput func={changeBreakfastAdditivesGr} func2={setTotalBrCal} />
-                                    <DailyInsertList func={changebreakfastAdditivesText} />
+                                    <DailyInsertList func={changebreakfastAdditivesText} onMouseLeave={setTotalBrCal} />
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeBreakfastExtra} placeholder={breakfastExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeBreakfastExtra} />
                             </td>
                             <td>
                                 <button className="btn btn-default" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeBrCal}><strong id="totalBrCal" >See Total Calories</strong></button>
@@ -379,29 +382,29 @@ const DailyInsert = () => {
                             <td>
                                 <button name="" id="" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {lunchMainText} &nbsp;<DailyInsertInput func={changeLunchMainGr} func2={setTotalLnCal} />
-                                    <DailyInsertList func={changeLunchMain} />
+                                    <DailyInsertList func={changeLunchMain} onMouseLeave={setTotalLnCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="" id="" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {lunchSideText} &nbsp; <DailyInsertInput func={changeLunchSideGr} func2={setTotalLnCal} />
-                                    <DailyInsertList func={changeLunchSide} />
+                                    <DailyInsertList func={changeLunchSide} onMouseLeave={setTotalLnCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="" id="" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {lunchDrinkText} &nbsp; <DailyInsertInput func={changeLunchDrinkGr} func2={setTotalLnCal} />
-                                    <DailyInsertList func={changeLunchDrink} />
+                                    <DailyInsertList func={changeLunchDrink} onMouseLeave={setTotalLnCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="" id="" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {lunchAdditivesText} &nbsp; <DailyInsertInput func={changeLunchAdditivesGr} func2={setTotalLnCal} />
-                                    <DailyInsertList func={changeLunchAdditives} />
+                                    <DailyInsertList func={changeLunchAdditives} onMouseLeave={setTotalLnCal}/>
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeLunchExtra} placeholder={lunchExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeLunchExtra} />
                             </td>
                             <td>
                                 <button id="totalLnCal" className="btn btn-default" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeLnCal}><strong >See Total Calories</strong></button>
@@ -428,29 +431,29 @@ const DailyInsert = () => {
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {dinnerMainText} &nbsp; <DailyInsertInput func={changeDinnerMainGr} func2={setTotalDnCal} />
-                                    <DailyInsertList func={changeDinnerMain} />
+                                    <DailyInsertList func={changeDinnerMain} onMouseLeave={setTotalDnCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {dinnerSideText} &nbsp; <DailyInsertInput func={changeDinnerSideGr} func2={setTotalDnCal} />
-                                    <DailyInsertList func={changeDinnerSide} />
+                                    <DailyInsertList func={changeDinnerSide} onMouseLeave={setTotalDnCal}/>
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {dinnerDrinkText} &nbsp; <DailyInsertInput func={changeDinnerDrinkGr} func2={setTotalDnCal} />
-                                    <DailyInsertList func={changeDinnerDrink} />
+                                    <DailyInsertList func={changeDinnerDrink} onMouseLeave={setTotalDnCal} />
                                 </button>
                             </td>
                             <td>
                                 <button name="brkfstMain" id="brkfstMain" className="foodCategory btn btn-default" style={{ backgroundColor: "wheat", minWidth: "160px" }}>
                                     {dinnerAdditivesText} &nbsp; <DailyInsertInput func={changeDinnerAdditivesGr} func2={setTotalDnCal} />
-                                    <DailyInsertList func={changeDinnerAdditives} />
+                                    <DailyInsertList func={changeDinnerAdditives} onMouseLeave={setTotalDnCal} />
                                 </button>
                             </td>
                             <td>
-                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeDinnerExtra} placeholder={dinnerExtra} />
+                                <input type="number" className="btn btn-default" style={{ backgroundColor: "wheat", width: "100px" }} onChange={changeDinnerExtra} />
                             </td>
                             <td>
                                 <button className="btn btn-default" id="totalDnCal" style={{ backgroundColor: "wheat", minWidth: "100px" }} onClick={seeDnCal}><strong>See Total Calories</strong></button>
@@ -466,6 +469,19 @@ const DailyInsert = () => {
                 </h3><br /><hr />
                 <h4><button type="submit" style={{ marginLeft: "20px", borderRadius: "9%", backgroundColor: "violet" }} onClick={sendData}>Submit</button></h4>
             </center>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br />
+            <br />
         </div>
     )
 }

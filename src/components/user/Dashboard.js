@@ -17,10 +17,9 @@ const Dashboard = () => {
         const userPlanString = localStorage.getItem("userPlan");
         const userPlan = JSON.parse(userPlanString);
         setUserPlan(userPlan);
-
-        console.log(userPlan);
     }, [])
 
+    const fixedBmi = user && user.BMI && user.BMI.toFixed(2);
 
     const avgCals = () => {
         var i = userPlan.dailyActualInput && userPlan.dailyActualInput.length;
@@ -55,23 +54,59 @@ const Dashboard = () => {
 
 
     return (
-        <Container style={{ backgroundColor: "honeydew" }}>
+        <div>
+            <Container style={{ backgroundColor: "honeydew" }}>
+                <h1 className="display-6">Your Profile:</h1>
+                <Row>
+                    <table className="profile-table" style={{ marginLeft: "20px" }}>
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Height </th>
+                                <th>Start Weight </th>
+                                <th>BMI</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>{user.FirstName}</th>
+                                <th>{user.LastName}</th>
+                                <th>age</th>
+                                <th>{user.HeightCM}</th>
+                                <th>{user.StartWeightKG}</th>
+                                <th>{fixedBmi}</th>
+                                <th>{user.Email}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </Row>
+                <br />
+                <Row className="d-flex">
+                    <InfoCards title="Average Calorie Intake" secondary="of the last 7 days" style={{ backgroundColor: "aqua" }} badge={avgCals()} />
+                    <InfoCards title="Average Excersize" secondary="of the last 7 days" style={{ backgroundColor: "aqua" }} badge={avgExcersize()} />
+                    <InfoCards title="Total Weight Loss" secondary="since beginning of program" style={{ backgroundColor: "aqua" }} badge="3.5 kg" />
+                    <InfoCards title="Amount Remaining" secondary="to your goal" style={{ backgroundColor: "aqua" }} badge="or something" />
+                </Row>
+
+                <Row>
+
+                    <UserGraph />
+                    <LineChart />
+                </Row>
+                <br />
+                <br />
+            </Container>
 
             <br />
-            <Row className="d-flex">
-                <InfoCards title="Average Calorie Intake" secondary="of the last 7 days" style={{ backgroundColor: "aqua" }} badge={avgCals()} />
-                <InfoCards title="Weight Loss" secondary="of the week" style={{ backgroundColor: "aqua" }} badge="3.5 kg" />
-                <InfoCards title="Average Daily Excersize" secondary="of the last 7 days" style={{ backgroundColor: "aqua" }} badge={avgExcersize()} />
-                <InfoCards title="Weight Loss" secondary="of the week" style={{ backgroundColor: "aqua" }} badge="or something" />
-            </Row>
-            {dt.getTime()}lah
-
-            <Row>
-
-                <UserGraph />
-                <LineChart />
-            </Row>
-        </Container>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
     )
 }
 
