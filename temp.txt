@@ -14,4 +14,4 @@
 7. issue: weekOf (dailyInsert & DailyPlan) doesn't reset if date is changed to that which doesn't have a weekOf
 
 
-https://boiling-escarpment-18224.herokuapp.com/
+https://obscure-wildwood-16888.herokuapp.com
