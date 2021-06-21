@@ -43,7 +43,7 @@ const ViewGoals = () => {
 
 
     const deleteGoal = () => {
-        axios.post("http://localhost:5990/router/db/DBupdateUser/deleteGoal", info)
+        axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/DBupdateUser/deleteGoal", info)
             .then(
                 (response) => {
                     alert("Delete successfull!")

@@ -57,7 +57,7 @@ const CategoryDetails = ({match}) => {
 
 
     return (
-        <div>
+        <div style={{minHeight:"900px"}}>
             <center>
                 <table className="details-table" id="dbg">
                     <thead>
@@ -71,34 +71,6 @@ const CategoryDetails = ({match}) => {
                     </tbody>
                 </table>
             </center>
-            <br/>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
     )
 }

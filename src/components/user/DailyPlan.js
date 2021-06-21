@@ -289,7 +289,7 @@ const DailyPlan = () => {
         }
 
 
-        axios.post("http://localhost:5990/router/db/DBinsert/insertDailyPlan", dailyPlanInput)
+        axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/DBinsert/insertDailyPlan", dailyPlanInput)
             .then(
                 (response) => {
                     console.log("SUCCESS: " + response.data);

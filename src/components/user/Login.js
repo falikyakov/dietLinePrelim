@@ -27,7 +27,7 @@ const Login = () => {
 
         document.getElementById('pleaseWait').setAttribute("id", "pleaseWaitVisible");
 
-        const user = await axios.post("http://localhost:5990/router/db/dbfind/login", info);
+        const user = await axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/dbfind/login", info);
         const userData = user.data;
         console.log(userData);
         const userString = JSON.stringify(userData);
@@ -39,7 +39,7 @@ const Login = () => {
         const localJson = JSON.parse(userString);
         const userId = localJson._id;
 
-        const userPlan = await axios.post("http://localhost:5990/router/db/dbfind/login2", { userId: userId });
+        const userPlan = await axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/dbfind/login2", { userId: userId });
         if (userPlan.status >= 200 && userPlan.status < 300) {
             const userPlanData = userPlan.data;
             console.log("userPlanData: " + userPlanData);

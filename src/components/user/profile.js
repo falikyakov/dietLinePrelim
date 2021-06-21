@@ -10,7 +10,7 @@ const Profile = ({ match }) => {
     const [user, setUser] = useState({});
 
     const getUser = async () => {
-        const info = await axios.get(`http://localhost:5990/router/db/findOne/603ebbb1496d034d18df7ed5`);
+        const info = await axios.get(`https://blooming-harbor-45317.herokuapp.com/router/db/findOne/603ebbb1496d034d18df7ed5`);
         const data = info.data;
         setUser(data);
         //(data);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
-import foodInfo from './foodInfo';
+import foodInfo from '../foods/foodInfo';
 import CARD_try from './CARD_try';
 const CON_try = () => {
 

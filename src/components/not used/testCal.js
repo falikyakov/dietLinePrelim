@@ -56,9 +56,9 @@ const TestCal = () => {
 
         console.log(bMain);
         axios.all([
-            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bMain}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bSide}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bDrink}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`)
+            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bMain}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bSide}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+            axios.get(`https://api.nal.usda.gov/fdc/v1/food/${bDrink}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`)
         ]).then(axios.spread((f1, f2, f3) => {
             console.log(f1);
             console.log(f2);
@@ -94,9 +94,9 @@ const TestCal = () => {
 
         lMain &&
             axios.all([
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lMain}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lSide}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lDrink}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`)
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lMain}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lSide}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${lDrink}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`)
             ]).then(axios.spread((f1, f2, f3) => {
                 console.log(f1);
                 console.log(f2);
@@ -130,9 +130,9 @@ const TestCal = () => {
         let dTotal;
 
             axios.all([
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dMain}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dSide}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`),
-                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dDrink}?api_key=sSF9MFj2ctRScm5GhVsP3vjkkR2Vd6SfFf52afxP`)
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dMain}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dSide}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`),
+                axios.get(`https://api.nal.usda.gov/fdc/v1/food/${dDrink}?api_key=${process.env.REACT_APP_USDA_APP_KEY}`)
             ]).then(axios.spread((f1, f2, f3) => {
                 console.log(f1);
                 console.log(f2);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import foodList from './foodsComponentList';
+import foodList from '../foods/foodsComponentList';
 
 const FC_try = ({ match }) => {
 

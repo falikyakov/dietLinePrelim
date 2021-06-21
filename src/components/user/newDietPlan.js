@@ -92,7 +92,7 @@ const NewDietPlan = () => {
         }
 
 
-        axios.post("http://localhost:5990/router/db/DBinsert/insertGoal", goals)
+        axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/DBinsert/insertGoal", goals)
             .then(
                 (response) => {
                     // alert("in response");

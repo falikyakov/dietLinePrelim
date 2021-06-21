@@ -81,7 +81,7 @@ const SignUp = () => {
         event.preventDefault();
 
 
-        const check = await axios.get("http://localhost:5990/router/db/find");
+        const check = await axios.get("https://blooming-harbor-45317.herokuapp.com/router/db/find");
         const data = check.data;
         console.log(data);
         data &&
@@ -116,7 +116,7 @@ const SignUp = () => {
             return;
         }
 
-        axios.post("http://localhost:5990/router/db/DBinsert/insertUser", user)
+        axios.post("https://blooming-harbor-45317.herokuapp.com/router/db/DBinsert/insertUser", user)
             .then(
                 (response) => {
                     console.log(response);

@@ -16,7 +16,7 @@ import Profile from './components/user/profile';
 import NewDietPlan from './components/user/newDietPlan';
 import CheckLogin from './components/user/checkLogin';
 import Menu_v2 from './components/not used/menu_v2';
-import TestCal from './components/user/testCal';
+import TestCal from './components/not used/testCal';
 import Testimonials from './components/testimonials/Testimonials';
 import DailyInsert from './components/user/DailyInsert';
 import MenuView from './components/user/MenuView';

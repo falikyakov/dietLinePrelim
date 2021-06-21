@@ -13,7 +13,7 @@ const ArticlePage = () => {
 
 
     const fetchArticles = async () => {
-        const details = await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=fitness&api-key=XAkzbES1lUGCU6HTsAqLBUR0JOBDACoL`);
+        const details = await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=fitness&api-key=${process.env.REACT_APP_NYT_APP_KEY}`);
         const data = await details.json();
         setArticles(data);
         articles &&
